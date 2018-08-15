@@ -1,0 +1,4 @@
+framework module CollectionKit {
+    header "CollectionKit-Swift.h"
+    requires objc
+}

@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3224BAE21140D7300A4E55D /* CollectionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3224BAD21140D7300A4E55D /* CollectionKit.framework */; };
 		A342F5D721118E220035EC3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A342F5D621118E220035EC3C /* AppDelegate.swift */; };
 		A342F5D921118E220035EC3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A342F5D821118E220035EC3C /* ViewController.swift */; };
 		A342F5DC21118E220035EC3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A342F5DA21118E220035EC3C /* Main.storyboard */; };
 		A342F5DE21118E230035EC3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A342F5DD21118E230035EC3C /* Assets.xcassets */; };
 		A342F5E121118E230035EC3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A342F5DF21118E230035EC3C /* LaunchScreen.storyboard */; };
+		A35D31FB211AA73D00A07A4A /* StorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D31FA211AA73D00A07A4A /* StorySection.swift */; };
+		A35D31FD211AA75100A07A4A /* PostSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D31FC211AA75100A07A4A /* PostSection.swift */; };
+		A35D31FF211AA76500A07A4A /* AnnouncementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D31FE211AA76500A07A4A /* AnnouncementSection.swift */; };
+		A35D3201211AA79900A07A4A /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35D3200211AA79900A07A4A /* TestData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A3224BAD21140D7300A4E55D /* CollectionKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CollectionKit.framework; path = Carthage/Build/iOS/CollectionKit.framework; sourceTree = "<group>"; };
 		A342F5D321118E220035EC3C /* CollectionKitWorkshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionKitWorkshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A342F5D621118E220035EC3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A342F5D821118E220035EC3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +28,10 @@
 		A342F5DD21118E230035EC3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A342F5E021118E230035EC3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A342F5E221118E230035EC3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A35D31FA211AA73D00A07A4A /* StorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySection.swift; sourceTree = "<group>"; };
+		A35D31FC211AA75100A07A4A /* PostSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSection.swift; sourceTree = "<group>"; };
+		A35D31FE211AA76500A07A4A /* AnnouncementSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementSection.swift; sourceTree = "<group>"; };
+		A35D3200211AA79900A07A4A /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,19 +39,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3224BAE21140D7300A4E55D /* CollectionKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3224BAC21140D7300A4E55D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A3224BAD21140D7300A4E55D /* CollectionKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A342F5CA21118E220035EC3C = {
 			isa = PBXGroup;
 			children = (
 				A342F5D521118E220035EC3C /* CollectionKitWorkshop */,
 				A342F5D421118E220035EC3C /* Products */,
+				A3224BAC21140D7300A4E55D /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		A342F5D421118E220035EC3C /* Products */ = {
 			isa = PBXGroup;
@@ -56,6 +78,10 @@
 			children = (
 				A342F5D621118E220035EC3C /* AppDelegate.swift */,
 				A342F5D821118E220035EC3C /* ViewController.swift */,
+				A35D31FE211AA76500A07A4A /* AnnouncementSection.swift */,
+				A35D31FC211AA75100A07A4A /* PostSection.swift */,
+				A35D31FA211AA73D00A07A4A /* StorySection.swift */,
+				A35D3200211AA79900A07A4A /* TestData.swift */,
 				A342F5DA21118E220035EC3C /* Main.storyboard */,
 				A342F5DD21118E230035EC3C /* Assets.xcassets */,
 				A342F5DF21118E230035EC3C /* LaunchScreen.storyboard */,
@@ -74,6 +100,7 @@
 				A342F5CF21118E220035EC3C /* Sources */,
 				A342F5D021118E220035EC3C /* Frameworks */,
 				A342F5D121118E220035EC3C /* Resources */,
+				A3224BAF21140D8100A4E55D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -130,13 +157,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A3224BAF21140D8100A4E55D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CollectionKit.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CollectionKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A342F5CF21118E220035EC3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35D31FB211AA73D00A07A4A /* StorySection.swift in Sources */,
 				A342F5D921118E220035EC3C /* ViewController.swift in Sources */,
 				A342F5D721118E220035EC3C /* AppDelegate.swift in Sources */,
+				A35D3201211AA79900A07A4A /* TestData.swift in Sources */,
+				A35D31FF211AA76500A07A4A /* AnnouncementSection.swift in Sources */,
+				A35D31FD211AA75100A07A4A /* PostSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -268,7 +317,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -283,6 +332,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4VSEW78TKT;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CollectionKitWorkshop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +354,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4VSEW78TKT;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CollectionKitWorkshop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
