@@ -1,5 +1,5 @@
 //
-//  AnnouncementSection.swift
+//  AnnouncementSectionProvider.swift
 //  CollectionKitWorkshop
 //
 //  Created by Luke Zhao on 2018-08-08.
