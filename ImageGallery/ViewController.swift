@@ -25,7 +25,7 @@ class ViewController: UIViewController {
       }),
       sizeSource: { index, photo, size in
         let aspectRatio = photo.width / photo.height
-        return CGSize(width: size.height * aspectRatio, height: size.height)
+        return CGSize(width: size.width, height: size.width / aspectRatio)
     })
 
     provider.layout = FlowLayout()
