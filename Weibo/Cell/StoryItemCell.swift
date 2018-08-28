@@ -8,12 +8,13 @@
 
 import UIKit
 
-class StoryItemView: UIImageView {
+class StoryItemCell: UICollectionViewCell {
+  let imageView = UIImageView()
   let borderView = UIImageView(image: #imageLiteral(resourceName: "storyBorder"))
   var story: Story? {
     didSet {
       guard let story = story else { return }
-      image = story.image
+      imageView.image = story.image
     }
   }
 
@@ -21,6 +22,8 @@ class StoryItemView: UIImageView {
     super.init(frame: frame)
     clipsToBounds = true
     backgroundColor = .lightGray
+    imageView.contentMode = .scaleAspectFill
+    addSubview(imageView)
     addSubview(borderView)
   }
 
@@ -30,6 +33,7 @@ class StoryItemView: UIImageView {
 
   override func layoutSubviews() {
     super.layoutSubviews()
+    imageView.frame = bounds
     borderView.frame = bounds
     layer.cornerRadius = bounds.width / 2
   }

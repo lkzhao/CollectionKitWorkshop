@@ -9,7 +9,7 @@
 import UIKit
 import CollectionKit
 
-class StorySectionProvider: BasicProvider<Story, StoryItemView> {
+class StorySectionProvider: BasicProvider<Story, StoryItemCell> {
   let storyDataSource = ArrayDataSource<Story>(identifierMapper: { (index, story) in
     return story.id
   })
@@ -19,7 +19,7 @@ class StorySectionProvider: BasicProvider<Story, StoryItemView> {
     }
   }
   init() {
-    let viewSource = ClosureViewSource(viewUpdater: { (itemView: StoryItemView, story: Story, index) in
+    let viewSource = ClosureViewSource(viewUpdater: { (itemView: StoryItemCell, story: Story, index) in
       itemView.story = story
     })
     let sizeSource = { (index: Int, story: Story, collectionSize: CGSize) -> CGSize in

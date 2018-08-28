@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostItemView: UIView {
+class PostItemCell: UICollectionViewCell {
   let avatarView = UIImageView()
   let nameLabel = UILabel()
   let contentLabel = UILabel()

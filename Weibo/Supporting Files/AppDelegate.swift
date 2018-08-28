@@ -13,5 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
+  func applicationDidFinishLaunching(_ application: UIApplication) {
+    window = UIWindow()
+    window?.rootViewController = ViewController()
+//    window?.rootViewController = ViewControllerCK()
+    window?.becomeKey()
+  }
 }
 
