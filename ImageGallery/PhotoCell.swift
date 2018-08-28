@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoCell: UIView {
+class PhotoCell: UICollectionViewCell {
   let imageView = UIImageView()
   let label = UILabel()
 
@@ -16,7 +16,7 @@ class PhotoCell: UIView {
     didSet {
       guard let photo = photo else { return }
       imageView.image = UIImage(named: photo.name)
-      label.text = "Photo by \(photo.username)"
+      label.text = photo.username
     }
   }
 

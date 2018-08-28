@@ -13,56 +13,6 @@ let storyItemCellIdentifier = "storyItemCellIdentifier"
 let postItemCellIdentifier = "postItemCellIdentifier"
 let storyCellIdentifier = "storyCellIdentifier"
 
-class StoryCell: UICollectionViewCell {
-  let layout = UICollectionViewFlowLayout()
-  let collectionView: UICollectionView
-
-  var stories: [Story] = [] {
-    didSet {
-      collectionView.reloadData()
-    }
-  }
-
-  override init(frame: CGRect) {
-    collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-    super.init(frame: frame)
-
-    layout.scrollDirection = .horizontal
-    layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-
-    collectionView.backgroundColor = .clear
-    collectionView.delegate = self
-    collectionView.dataSource = self
-    collectionView.register(StoryItemCell.self, forCellWithReuseIdentifier: storyItemCellIdentifier)
-    addSubview(collectionView)
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    collectionView.frame = bounds
-  }
-}
-
-extension StoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return stories.count
-  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: storyItemCellIdentifier, for: indexPath) as! StoryItemCell
-    cell.story = stories[indexPath.item]
-    return cell
-  }
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 64, height: 64)
-  }
-}
-
 class ViewController: UIViewController {
   let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
@@ -115,3 +65,53 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
   }
 }
 
+
+class StoryCell: UICollectionViewCell {
+  let layout = UICollectionViewFlowLayout()
+  let collectionView: UICollectionView
+
+  var stories: [Story] = [] {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
+
+  override init(frame: CGRect) {
+    collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+    super.init(frame: frame)
+
+    layout.scrollDirection = .horizontal
+    layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+
+    collectionView.backgroundColor = .clear
+    collectionView.delegate = self
+    collectionView.dataSource = self
+    collectionView.register(StoryItemCell.self, forCellWithReuseIdentifier: storyItemCellIdentifier)
+    addSubview(collectionView)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    collectionView.frame = bounds
+  }
+}
+
+extension StoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return stories.count
+  }
+
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: storyItemCellIdentifier, for: indexPath) as! StoryItemCell
+    cell.story = stories[indexPath.item]
+    return cell
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 64, height: 64)
+  }
+}

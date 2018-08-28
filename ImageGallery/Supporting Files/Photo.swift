@@ -17,7 +17,7 @@ struct Photo: Codable {
   let height: CGFloat
 }
 
-let photos = [
+let testPhotos = [
   Photo(
     name: "xq6tKtQYNJI",
     photoURL: "https://unsplash.com/photos/xq6tKtQYNJI?utm_source=unsample&utm_medium=referral&utm_campaign=api-credit",
