@@ -17,7 +17,9 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    collectionView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+
+    collectionView.indicatorStyle = .white
+    collectionView.backgroundColor = .black
     collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: photoCellIdentifier)
     collectionView.delegate = self
     collectionView.dataSource = self
@@ -63,15 +65,20 @@ class UIMosaicLayout: UICollectionViewLayout {
       return
     }
     attributes.removeAll()
+    
     var contentFrame: CGRect = .zero
-
     let rowHeight: CGFloat = 200
+
     for item in 0..<collectionView.numberOfItems(inSection: 0) {
+
       let frame = getFrame(rowHeight: rowHeight, index: item, collectionSize: collectionView.bounds.size)
+
       let attr = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: item, section: 0))
       attr.frame = frame
       attributes.append(attr)
+
       contentFrame = contentFrame.union(frame)
+
     }
 
     contentSize = contentFrame.size
