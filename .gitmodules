@@ -1,0 +1,3 @@
+[submodule "CollectionKit"]
+	path = CollectionKit
+	url = https://github.com/SoySauceLab/CollectionKit.git

@@ -73,11 +73,11 @@ extension ViewController: UITextFieldDelegate {
 class RotateAnimator: Animator {
   override func insert(collectionView: CollectionView, view: UIView, at: Int, frame: CGRect) {
     view.frame = frame
-    guard collectionView.isReloading else {
-      view.layer.transform = CATransform3DIdentity
-      view.alpha = 1
-      return
-    }
+//    guard collectionView.isReloading else {
+//      view.layer.transform = CATransform3DIdentity
+//      view.alpha = 1
+//      return
+//    }
     var t = CATransform3DIdentity
     t.m34 = -1 / 500
     t = CATransform3DTranslate(t, 0, 0, -100)
@@ -85,7 +85,7 @@ class RotateAnimator: Animator {
     t = CATransform3DRotate(t, 1.0, 1, 0, 0)
     view.layer.transform = t
     view.alpha = 0
-    let distance = frame.origin.distance(.zero) / CGPoint(x: collectionView.visibleFrame.maxX, y: collectionView.visibleFrame.maxY).distance(.zero) / 5
+    let distance = frame.origin.distance(.zero) / CGPoint(x: collectionView.visibleFrame.maxX, y: collectionView.visibleFrame.maxY).distance(.zero) / 2
     animate(delay: TimeInterval(distance)) {
       view.layer.transform = CATransform3DIdentity
       view.alpha = 1
@@ -98,7 +98,7 @@ class RotateAnimator: Animator {
     t = CATransform3DTranslate(t, 0, 0, -100)
     t = CATransform3DScale(t, 0.8, 0.8, 1.0)
     t = CATransform3DRotate(t, 1.0, 1, 0, 0)
-    let distance = view.frame.origin.distance(.zero) / CGPoint(x: collectionView.visibleFrame.maxX, y: collectionView.visibleFrame.maxY).distance(.zero) / 5
+    let distance = view.frame.origin.distance(.zero) / CGPoint(x: collectionView.visibleFrame.maxX, y: collectionView.visibleFrame.maxY).distance(.zero) / 2
     animate(
       delay: TimeInterval(distance),
       animations: {
@@ -123,7 +123,7 @@ class RotateAnimator: Animator {
   }
 
   func animate(delay: TimeInterval = 0, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) {
-    UIView.animate(withDuration: 0.5,
+    UIView.animate(withDuration: 1,
                    delay: delay,
                    usingSpringWithDamping: 0.8,
                    initialSpringVelocity: 0,
