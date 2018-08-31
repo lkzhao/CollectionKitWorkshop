@@ -51,23 +51,17 @@ extension ViewController {
       dataSource: ArrayDataSource(data: stories),
       viewSource: ClosureViewSource(viewUpdater: { (cell: StoryItemCell, data, index) in
         // 1. update StoryItemCell here
-        cell.story = data
       }),
       sizeSource: { index, data, collectionSize in
         // 2. return size for each StoryItemCell here
-        return CGSize(width: 64, height: 64)
+        return .zero
     }
     )
     // 3. update post provider layout to include spacing
-    storyProvider.layout = RowLayout(spacing: 10).inset(by: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
 
     // 7. fix scrolling issue
-    let storyCell = CollectionView()
-    storyCell.provider = storyProvider
-    let storySection = SimpleViewProvider(views: [storyCell],
-                                          sizeStrategy: (.fill, .absolute(104)))
 
-    return storySection
+    return storyProvider
   }
 
   func getPostSection() -> Provider {
@@ -75,15 +69,13 @@ extension ViewController {
       dataSource: ArrayDataSource(data: posts),
       viewSource: ClosureViewSource(viewUpdater: { (cell: PostItemCell, data, index) in
         // 4. update PostItemCell here
-        cell.post = data
       }),
       sizeSource: { index, data, collectionSize in
         // 5. return size for each StoryItemCell here
-        return CGSize(width: collectionSize.width, height: 200)
+        return .zero
     }
     )
     // 6. update post provider layout to include spacing
-    postProvider.layout = FlowLayout(spacing: 10)
 
     return postProvider
   }
