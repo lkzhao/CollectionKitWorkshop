@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     ]
 
     // 1. setup animator
-    imageGalleryProvider.animator = FancyAnimator()
+    
   }
 
   override func viewDidLayoutSubviews() {
@@ -84,35 +84,17 @@ class FancyAnimator: Animator {
 
   override func insert(collectionView: CollectionView, view: UIView, at: Int, frame: CGRect) {
     // 2. insertion animation
-    guard collectionView.isReloading, collectionView.reloadCount != 0 else { return }
-    view.layer.transform = targetTransform
-    view.alpha = 0
 
-    let delay = frame.minY / collectionView.bounds.height * 0.5
-
-    animate(delay: TimeInterval(delay)) {
-      view.layer.transform = CATransform3DIdentity
-      view.alpha = 1
-    }
   }
 
   override func delete(collectionView: CollectionView, view: UIView) {
     // 3. deletion animation
-    animate(animations: {
-      view.layer.transform = self.targetTransform
-      view.alpha = 0
-    }) { _ in
-      view.alpha = 1
-      view.layer.transform = CATransform3DIdentity
-      view.recycleForCollectionKitReuse()
-    }
+    view.recycleForCollectionKitReuse()
   }
 
   override func update(collectionView: CollectionView, view: UIView, at: Int, frame: CGRect) {
     // 4. update animation
-    animate {
-      view.frame = frame
-    }
+    view.frame = frame
   }
 
   func animate(delay: TimeInterval = 0, animations: @escaping () -> Void) {
