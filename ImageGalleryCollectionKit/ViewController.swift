@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     view.addSubview(collectionView)
 
     let provider = ImageGalleryProvider()
-    provider.layout = FlowLayout()
+    provider.layout = FlowLayout() // 2. update provider's layout
     provider.photos = testPhotos
     collectionView.provider = provider
   }
@@ -35,11 +35,7 @@ class MosaicLayout: VerticalSimpleLayout {
   override func simpleLayout(context: LayoutContext) -> [CGRect] {
     var frames: [CGRect] = []
 
-    let rowHeight: CGFloat = 200 //context.collectionSize.height / 2
-    for index in 0..<context.numberOfItems {
-      let frame = getFrame(rowHeight: rowHeight, index: index, collectionSize: context.collectionSize)
-      frames.append(frame)
-    }
+    // 1. generate frames for each cell
 
     return frames
   }
