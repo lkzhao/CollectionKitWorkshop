@@ -41,11 +41,13 @@ class ViewController: UIViewController {
     imageGalleryProvider.photos = testPhotos
 
     // setup entire screen
-    mainProvider.animator = RotateAnimator()
     mainProvider.sections = [
       navbarProvider,
       imageGalleryProvider
     ]
+
+    // 1. setup animator
+    mainProvider.animator = FancyAnimator()
   }
 
   override func viewDidLayoutSubviews() {
@@ -70,43 +72,51 @@ extension ViewController: UITextFieldDelegate {
   }
 }
 
-class RotateAnimator: Animator {
+class FancyAnimator: Animator {
+  let targetTransform: CATransform3D = {
+    var t = CATransform3DIdentity
+    t.m34 = -1 / 500
+    t = CATransform3DTranslate(t, 0, 0, -100)
+    t = CATransform3DScale(t, 0.8, 0.8, 1.0)
+    t = CATransform3DRotate(t, 1.0, 1, 0, 0)
+    return t
+  }()
+
   override func insert(collectionView: CollectionView, view: UIView, at: Int, frame: CGRect) {
+    // 2. insertion animation
     view.frame = frame
     guard collectionView.isReloading else {
       view.layer.transform = CATransform3DIdentity
       view.alpha = 1
       return
     }
-    var t = CATransform3DIdentity
-    t.m34 = -1 / 500
-    t = CATransform3DTranslate(t, 0, 0, -100)
-    t = CATransform3DScale(t, 0.8, 0.8, 1.0)
-    t = CATransform3DRotate(t, 1.0, 1, 0, 0)
-    view.layer.transform = t
+
+    view.layer.transform = targetTransform
     view.alpha = 0
     let distance = frame.origin.distance(.zero) / CGPoint(x: collectionView.visibleFrame.maxX, y: collectionView.visibleFrame.maxY).distance(.zero) / 2
     animate(delay: TimeInterval(distance)) {
       view.layer.transform = CATransform3DIdentity
       view.alpha = 1
     }
+
+    // 5. cascading effect
+
+    // 6. disable scrolling animation
+    
   }
 
   override func delete(collectionView: CollectionView, view: UIView) {
-    var t = CATransform3DIdentity
-    t.m34 = -1 / 500
-    t = CATransform3DTranslate(t, 0, 0, -100)
-    t = CATransform3DScale(t, 0.8, 0.8, 1.0)
-    t = CATransform3DRotate(t, 1.0, 1, 0, 0)
+    // 3. deletion animation
     animate(animations: {
         view.alpha = 0
-        view.layer.transform = t
+        view.layer.transform = self.targetTransform
       }, completion: { _ in
         view.recycleForCollectionKitReuse()
       })
   }
 
   override func update(collectionView: CollectionView, view: UIView, at: Int, frame: CGRect) {
+    // 4. update animation
     let frameCenter = CGPoint(x: frame.midX, y: frame.midY)
     if view.center != frameCenter {
       animate {
