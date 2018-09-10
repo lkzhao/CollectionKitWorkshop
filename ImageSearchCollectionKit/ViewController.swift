@@ -93,16 +93,13 @@ class FancyAnimator: Animator {
 
     view.layer.transform = targetTransform
     view.alpha = 0
-    let distance = frame.origin.distance(.zero) / CGPoint(x: collectionView.visibleFrame.maxX, y: collectionView.visibleFrame.maxY).distance(.zero) / 2
+    let lowerRightPoint = CGPoint(x: collectionView.visibleFrame.maxX,
+                                  y: collectionView.visibleFrame.maxY)
+    let distance = frame.origin.distance(.zero) / lowerRightPoint.distance(.zero) * 0.5
     animate(delay: TimeInterval(distance)) {
       view.layer.transform = CATransform3DIdentity
       view.alpha = 1
     }
-
-    // 5. cascading effect
-
-    // 6. disable scrolling animation
-    
   }
 
   override func delete(collectionView: CollectionView, view: UIView) {
