@@ -114,11 +114,8 @@ class FancyAnimator: Animator {
 
   override func update(collectionView: CollectionView, view: UIView, at: Int, frame: CGRect) {
     // 4. update animation
-    let frameCenter = CGPoint(x: frame.midX, y: frame.midY)
-    if view.center != frameCenter {
-      animate {
-        view.center = frameCenter
-      }
+    animate {
+      view.frame = frame
     }
   }
 
