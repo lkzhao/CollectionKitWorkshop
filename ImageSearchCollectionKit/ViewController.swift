@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     ]
 
     // 1. setup animator
-    mainProvider.animator = FancyAnimator()
+    imageGalleryProvider.animator = FancyAnimator()
   }
 
   override func viewDidLayoutSubviews() {
@@ -84,19 +84,13 @@ class FancyAnimator: Animator {
 
   override func insert(collectionView: CollectionView, view: UIView, at: Int, frame: CGRect) {
     // 2. insertion animation
-    view.frame = frame
-    guard collectionView.isReloading else {
-      view.layer.transform = CATransform3DIdentity
-      view.alpha = 1
-      return
-    }
-
+    guard collectionView.isReloading, collectionView.reloadCount != 0 else { return }
     view.layer.transform = targetTransform
     view.alpha = 0
-    let lowerRightPoint = CGPoint(x: collectionView.visibleFrame.maxX,
-                                  y: collectionView.visibleFrame.maxY)
-    let distance = frame.origin.distance(.zero) / lowerRightPoint.distance(.zero) * 0.5
-    animate(delay: TimeInterval(distance)) {
+
+    let delay = frame.minY / collectionView.bounds.height * 0.5
+
+    animate(delay: TimeInterval(delay)) {
       view.layer.transform = CATransform3DIdentity
       view.alpha = 1
     }
@@ -105,11 +99,13 @@ class FancyAnimator: Animator {
   override func delete(collectionView: CollectionView, view: UIView) {
     // 3. deletion animation
     animate(animations: {
-        view.alpha = 0
-        view.layer.transform = self.targetTransform
-      }, completion: { _ in
-        view.recycleForCollectionKitReuse()
-      })
+      view.layer.transform = self.targetTransform
+      view.alpha = 0
+    }) { _ in
+      view.alpha = 1
+      view.layer.transform = CATransform3DIdentity
+      view.recycleForCollectionKitReuse()
+    }
   }
 
   override func update(collectionView: CollectionView, view: UIView, at: Int, frame: CGRect) {
