@@ -42,13 +42,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     cell.photo = photos[indexPath.item]
     return cell
   }
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let photo = photos[indexPath.item]
-    let size = collectionView.bounds.size
-    let aspectRatio = photo.width / photo.height
-    return CGSize(width: size.width, height: size.width / aspectRatio)
-  }
 }
 
 class UIMosaicLayout: UICollectionViewLayout {
